@@ -60,12 +60,4 @@ class EmailNotification extends Mailable
 
         return $this->markdown('email');
     }
-
-    /**
-     * @param callable $handler
-     */
-    public function assertEmail($handler)
-    {
-        $this->handler = $handler;
-    }
 }

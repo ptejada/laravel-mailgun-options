@@ -33,8 +33,6 @@ jobs:
         exclude:
           - php-versions: '7.1'
             test-bench: 4
-          - php-versions: '7.2'
-            test-bench: 4
 
     name: Test PHP ${{ matrix.php-versions }} - v${{ matrix.test-bench }}
     runs-on: ubuntu-latest
