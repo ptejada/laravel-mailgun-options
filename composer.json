@@ -1,0 +1,36 @@
+{
+    "name": "ptejada/laravel-mailgun-options",
+    "description": "Laravel mailgun driver helper to toggle email opens, clicks, tag emails and more per mailable.",
+
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pablo Tejada",
+            "email": "pablo@tejada.dev"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "PabloTejada\\MailgunOptions\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PabloTejada\\MailgunOptions\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "illuminate/support": "^5.5|^6",
+        "guzzlehttp/guzzle": "^6.5",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.2",
+        "orchestra/database": "^3.5",
+        "orchestra/testbench": "3.5.*",
+        "phpunit/phpunit": "^6|^7|^8"
+    }
+}

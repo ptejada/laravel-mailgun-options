@@ -1,0 +1,55 @@
+name: Laravel
+
+on: [push]
+
+jobs:
+  old-testing:
+    name: Test PHP 7.0 - v3.5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: 7.0
+          coverage: none
+          extensions: mbstring, dom, fileinfo
+
+      - name: Install TestBench
+        run: composer install --no-suggest --prefer-dist --no-progress
+
+      - name: Fix Compatability with PHP 7.0
+        run: sed -i 's/:void//' tests/TestCase.php
+
+      - name: Test with phpunit
+        run: vendor/bin/phpunit
+
+  testing:
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['7.1', '7.2', '7.3']
+        test-bench: ['3.6', '3.7', '3.8']
+        exclude:
+          - php-versions: '7.1'
+            test-bench: 4
+          - php-versions: '7.2'
+            test-bench: 4
+
+    name: Test PHP ${{ matrix.php-versions }} - v${{ matrix.test-bench }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
+          extensions: mbstring, dom, fileinfo
+
+      - name: Install TestBench v${{ matrix.test-bench }}
+        run: composer require orchestra/testbench:"${{ matrix.test-bench }}.*" --dev --no-suggest --prefer-dist --no-progress
+
+      - name: Test with phpunit
+        run: vendor/bin/phpunit
