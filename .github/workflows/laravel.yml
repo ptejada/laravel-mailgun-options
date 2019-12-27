@@ -1,6 +1,6 @@
-name: Laravel
+name: Unit Test
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   old-testing:

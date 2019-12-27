@@ -1,4 +1,4 @@
-# Laravel Mailgun Options
+# Laravel Mailgun Options ![](https://github.com/ptejada/laravel-mailgun-options/workflows/Unit%20Test/badge.svg?branch=master)
 
 The package enhances the builtin Laravel Mailgun driver with helpers to manage the Mailgun specific features in a
 per email message basis. The following options can be configures with the helper:
