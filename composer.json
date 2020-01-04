@@ -1,7 +1,7 @@
 {
     "name": "ptejada/laravel-mailgun-options",
     "description": "Laravel mailgun driver helper to toggle email opens, clicks, tag emails and more per mailable.",
-
+    "keywords": ["laravel", "mailgun", "email tracking"],
     "license": "MIT",
     "authors": [
         {
@@ -24,7 +24,7 @@
     },
     "require": {
         "illuminate/support": "^5.5|^6",
-        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/guzzle": "^6",
         "ext-json": "*"
     },
     "require-dev": {

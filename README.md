@@ -1,4 +1,4 @@
-# Laravel Mailgun Options ![](https://github.com/ptejada/laravel-mailgun-options/workflows/Unit%20Test/badge.svg?branch=master)
+# Laravel Mailgun Options ![](https://github.com/ptejada/laravel-mailgun-options/workflows/Unit%20Test/badge.svg?branch=master) [![Packagist](https://img.shields.io/packagist/v/ptejada/laravel-mailgun-options.svg)](https://packagist.org/packages/ptejada/laravel-mailgun-options)
 
 The package enhances the builtin Laravel Mailgun driver with helpers to manage the Mailgun specific features in a
 per email message basis. The following options can be configures with the helper:
@@ -19,6 +19,17 @@ Install package via composer
 ```
 composer require ptejada/laravel-mailgun-options
 ```
+
+## Compatibility
+The packages is tested and should be compatible with the following PHP and Laravel versions
+
+| PHP | Laravel   |
+|---|---|
+| 7.0  | 5.5  |
+| 7.1  | 5.6 - 5.8  |
+| 7.2  | 5.6 - 5.8  |
+| 7.3  | 5.6 - 5.8  |
+| 7.3  | 6.x  |
 
 ## Usage
 
