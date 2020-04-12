@@ -34,10 +34,12 @@ jobs:
       fail-fast: false
       matrix:
         php-versions: ['7.1', '7.2', '7.3']
-        test-bench: ['3.6', '3.7', '3.8', '4']
+        test-bench: ['3.6', '3.7', '3.8', '4', '5']
         exclude:
           - php-versions: '7.1'
             test-bench: 4
+          - php-versions: '7.1'
+            test-bench: 5
 
     name: Test PHP ${{ matrix.php-versions }} - v${{ matrix.test-bench }}
     runs-on: ubuntu-latest
