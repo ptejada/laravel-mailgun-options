@@ -27,9 +27,8 @@ The packages is tested and should be compatible with the following PHP and Larav
 |---|---|
 | 7.0  | 5.5  |
 | 7.1  | 5.6 - 5.8  |
-| 7.2  | 5.6 - 5.8  |
-| 7.3  | 5.6 - 5.8  |
-| 7.3  | 6.x  |
+| 7.2  | 5.6 - 5.8, 6.x, 7.x  |
+| 7.3  | 5.6 - 5.8, 6.x, 7.x  |
 
 ## Usage
 
