@@ -25,5 +25,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         // Setup default database to use sqlite :memory:
         $app['config']->push('view.paths', __DIR__ . '/views');
+
+        // Default mail to array
+        $app['config']->set('mail.default', 'array');
     }
 }
