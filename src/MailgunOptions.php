@@ -2,6 +2,7 @@
 
 namespace PabloTejada\MailgunOptions;
 
+use DateTime;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Arr;
 
@@ -20,7 +21,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function tags(...$tags)
+    protected function tags(...$tags): self
     {
         if (count($tags) === 1 && is_array($tags[0])) {
             $tags = $tags[0];
@@ -38,7 +39,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function track($enable = true)
+    protected function track(bool $enable = true): self
     {
         $this->addOption('Track', $enable ? 'yes' : 'no');
 
@@ -52,7 +53,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function trackOpens($enable = true)
+    protected function trackOpens(bool $enable = true): self
     {
         $this->addOption('Track-Opens', $enable ? 'yes' : 'no');
 
@@ -67,7 +68,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function trackClicks($enable = true)
+    protected function trackClicks(bool $enable = true): self
     {
         $this->addOption('Track-Clicks', $enable ? 'htmlonly' : 'no');
 
@@ -81,7 +82,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function dkimSignature($enable = true)
+    protected function dkimSignature(bool $enable = true): self
     {
         $this->addOption('Dkim', $enable ? 'yes' : 'no');
 
@@ -91,15 +92,15 @@ trait MailgunOptions
     /**
      * Schedule the email to be delivered at a later time
      *
-     * @param \DateTime $dateTime Future date. Should not more than 3 days in the future
+     * @param DateTime $dateTime Future date. Should not more than 3 days in the future
      */
-    protected function deliverBy(\DateTime $dateTime)
+    protected function deliverBy(DateTime $dateTime)
     {
-        $this->addOption('Delivery-By', $dateTime->format(\DateTime::RFC2822));
+        $this->addOption('Delivery-By', $dateTime->format(DateTime::RFC2822));
     }
 
     /**
-     * Sends the email in test mode. The email will be accepted by the API but it won't be delivered to the recipient
+     * Sends the email in test mode. The email will be accepted by the API, but it won't be delivered to the recipient
      */
     protected function testMode()
     {
@@ -113,7 +114,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function variables(array $vars)
+    protected function variables(array $vars): self
     {
         $this->addOption('Variables', json_encode($vars));
 
@@ -127,7 +128,7 @@ trait MailgunOptions
      *
      * @return $this
      */
-    protected function recipientVariables(array $vars)
+    protected function recipientVariables(array $vars): self
     {
         $this->addOption('Recipient-Variables', json_encode($vars));
 
@@ -137,10 +138,10 @@ trait MailgunOptions
     /**
      * Adds an option for the email
      *
-     * @param string $name  Option name
-     * @param string $value Option value
+     * @param string          $name  Option name
+     * @param string|string[] $value Option value
      */
-    private function addOption($name, $value)
+    private function addOption(string $name, $value)
     {
         $this->withSwiftMessage(
             function (\Swift_Message $message) use ($value, $name){

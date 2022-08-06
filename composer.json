@@ -24,12 +24,12 @@
     },
     "require": {
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^6",
-        "illuminate/support": "^5.5 || ^6.0 || ^7.0"
+        "guzzlehttp/guzzle": "^6 || ^7",
+        "illuminate/support": "^7.0 || ^8 || ^9"
     },
     "require-dev": {
-        "orchestra/database": "^3.5 || ^4.0 || ^5.0",
-        "orchestra/testbench": "^3.5 || ^4.0 || ^5.0",
+        "orchestra/database": "^5.0 || ^6.0",
+        "orchestra/testbench": "^5.0 || ^6 || ^7",
         "phpunit/phpunit": "^6 || ^7 || ^8"
     }
 }

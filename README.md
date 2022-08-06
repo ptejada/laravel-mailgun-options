@@ -21,14 +21,14 @@ composer require ptejada/laravel-mailgun-options
 ```
 
 ## Compatibility
-The packages is tested and should be compatible with the following PHP and Laravel versions
+The package is tested and should be compatible with the following PHP and Laravel versions
 
-| PHP | Laravel   |
-|---|---|
-| 7.0  | 5.5  |
-| 7.1  | 5.6 - 5.8  |
-| 7.2  | 5.6 - 5.8, 6.x, 7.x  |
-| 7.3  | 5.6 - 5.8, 6.x, 7.x  |
+| PHP | Laravel       |
+|-----|---------------|
+| 7.3 | 7.x           |
+| 7.4 | 7.x, 8.x      |
+| 8.0 | 7.x, 8.x, 9.x |
+| 8.1 | 8.x, 9.x      |
 
 ## Usage
 

@@ -8,37 +8,20 @@ on:
     - cron: '0 12 1 * *'
 
 jobs:
-  old-testing:
-    name: Test PHP 7.0 - v3.5
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup PHP, with composer and extensions
-        uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
-        with:
-          php-version: 7.0
-          coverage: none
-          extensions: mbstring, dom, fileinfo
-
-      - name: Install TestBench
-        run: composer install --no-suggest --prefer-dist --no-progress
-
-      - name: Fix Compatability with PHP 7.0
-        run: sed -i 's/:void//' tests/TestCase.php
-
-      - name: Test with phpunit
-        run: vendor/bin/phpunit
-
   testing:
     strategy:
       matrix:
-        php: [7.1, 7.2, 7.3]
-        laravel: [5.6, 5.7, 5.8, 6, 7]
+        php: [7.3, 7.4, 8.0, 8.1]
+        laravel: [7, 8, 9]
         exclude:
-          - php: 7.1
-            laravel: 6
-          - php: 7.1
+          - php: 8.1
             laravel: 7
+          - php: 7.3
+            laravel: 8
+          - php: 7.3
+            laravel: 9
+          - php: 7.4
+            laravel: 9
 
     name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
     runs-on: ubuntu-latest
@@ -53,9 +36,13 @@ jobs:
           coverage: none
           extensions: mbstring, dom, fileinfo
 
-      - name: Install Dependecies
+      - name: Install orchestra/database:6
+        if: matrix.laravel == 9
+        run: composer require orchestra/database:^6
+
+      - name: Install Dependencies
         run: |
-          composer require "illuminate/contracts:${{ matrix.laravel }}" --no-interaction --no-update
+          composer require "illuminate/contracts:^${{ matrix.laravel }}" --no-interaction --no-update
           composer install --prefer-dist --no-interaction --no-suggest
 
       - name: Run tests
